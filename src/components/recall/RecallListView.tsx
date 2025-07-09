@@ -1,10 +1,10 @@
-import type { RecallItem } from "../types/recall";
+import type { RecallItem } from "../../types/recall";
 
 interface Props {
   items: RecallItem[];
 }
 
-export default function RecallList({ items }: Props) {
+export default function RecallListView({ items }: Props) {
   if (items.length === 0) return <p>데이터 없음</p>;
 
   return (
