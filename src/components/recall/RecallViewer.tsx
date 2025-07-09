@@ -2,13 +2,8 @@ import { useRecallList } from "../../hooks/useRecallList";
 import RecallGalleryView from "./RecallGalleryView";
 import RecallListView from "./RecallListView";
 import { useEffect, useState } from "react";
-
-const VIEW_TYPES = {
-  LIST: "list",
-  GALLERY: "gallery",
-} as const;
-
-type ViewType = (typeof VIEW_TYPES)[keyof typeof VIEW_TYPES];
+import { VIEW_TYPES } from "../../constants/viewTypes";
+import type { ViewType } from "../../constants/viewTypes";
 
 export default function RecallViewer() {
   const [viewType, setViewType] = useState<ViewType>(VIEW_TYPES.LIST);
@@ -17,8 +12,8 @@ export default function RecallViewer() {
   const row = data?.I0490?.row ?? [];
 
   useEffect(() => {
-    console.log(row);
-  }, [row]);
+    console.log(data?.row);
+  }, [data]);
 
   if (isLoading) return <p>로딩중</p>;
   if (error) return <p>에러 발생</p>;
