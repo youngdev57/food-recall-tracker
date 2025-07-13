@@ -1,19 +1,20 @@
 import { useRecallList } from "../../hooks/useRecallList";
 import RecallGalleryView from "./RecallGalleryView";
 import RecallListView from "./RecallListView";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { VIEW_TYPES } from "../../constants/viewTypes";
 import type { ViewType } from "../../constants/viewTypes";
+import Pagenation from "../common/Pagenation";
 
 export default function RecallViewer() {
   const [viewType, setViewType] = useState<ViewType>(VIEW_TYPES.LIST);
+  const [page, setPage] = useState(1);
+  const count = 5;
 
-  const { data, isLoading, error } = useRecallList();
+  const { data, isLoading, error } = useRecallList(page, count);
   const row = data?.I0490?.row ?? [];
 
-  useEffect(() => {
-    console.log(data?.row);
-  }, [data]);
+  const totalCount = parseInt(data?.I0490.totalCount ?? "0", 10);
 
   if (isLoading) return <p>로딩중</p>;
   if (error) return <p>에러 발생</p>;
@@ -41,6 +42,13 @@ export default function RecallViewer() {
 
       {viewType === VIEW_TYPES.LIST && <RecallListView items={row} />}
       {viewType === VIEW_TYPES.GALLERY && <RecallGalleryView items={row} />}
+
+      <Pagenation
+        current={page}
+        total={totalCount}
+        perPage={count}
+        onPageChange={(p) => setPage(p)}
+      />
     </div>
   );
 }
