@@ -1,4 +1,5 @@
 import type { RecallItem } from "../../types/recall";
+import RecallListItem from "./RecallListItem";
 
 interface Props {
   items: RecallItem[];
@@ -8,11 +9,9 @@ export default function RecallListView({ items }: Props) {
   if (items.length === 0) return <p>데이터 없음</p>;
 
   return (
-    <ul className="p-4">
-      {items.map((item, idx) => (
-        <li key={idx}>
-          {item.PRDTNM} | {item.BSSHNM}
-        </li>
+    <ul className="space-y-2">
+      {items.map((item) => (
+        <RecallListItem key={item.recallSeq} item={item} />
       ))}
     </ul>
   );

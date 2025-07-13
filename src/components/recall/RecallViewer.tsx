@@ -1,10 +1,12 @@
 import { useRecallList } from "../../hooks/useRecallList";
 import RecallGalleryView from "./RecallGalleryView";
 import RecallListView from "./RecallListView";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VIEW_TYPES } from "../../constants/viewTypes";
 import type { ViewType } from "../../constants/viewTypes";
+import type { RawRecallItem, RecallItem } from "../../types/recall";
 import Pagenation from "../common/Pagenation";
+import { normalizeRecallItem } from "../../utils/normalizeRecallItem";
 
 export default function RecallViewer() {
   const [viewType, setViewType] = useState<ViewType>(VIEW_TYPES.LIST);
@@ -12,9 +14,14 @@ export default function RecallViewer() {
   const count = 5;
 
   const { data, isLoading, error } = useRecallList(page, count);
-  const row = data?.I0490?.row ?? [];
+  const rowItems: RawRecallItem[] = data?.I0490?.row ?? [];
+  const items: RecallItem[] = rowItems.map(normalizeRecallItem);
 
   const totalCount = parseInt(data?.I0490.totalCount ?? "0", 10);
+
+  useEffect(() => {
+    console.log("processed:", items);
+  }, [items]);
 
   if (isLoading) return <p>로딩중</p>;
   if (error) return <p>에러 발생</p>;
@@ -40,8 +47,8 @@ export default function RecallViewer() {
         </button>
       </div>
 
-      {viewType === VIEW_TYPES.LIST && <RecallListView items={row} />}
-      {viewType === VIEW_TYPES.GALLERY && <RecallGalleryView items={row} />}
+      {viewType === VIEW_TYPES.LIST && <RecallListView items={items} />}
+      {viewType === VIEW_TYPES.GALLERY && <RecallGalleryView items={items} />}
 
       <Pagenation
         current={page}
