@@ -10,7 +10,7 @@ export default function RecallListView({ items }: Props) {
   return (
     <ul className="p-4">
       {items.map((item, idx) => (
-        <li key={idx}>{item.PRDTNM}</li>
+        <li key={idx}>{item.productName}</li>
       ))}
     </ul>
   );
