@@ -1,4 +1,4 @@
-import type { RawRecallItem, RecallItem } from "../types/recall";
+import type { RawRecallItem, RecallItem } from "@/types/recall";
 
 export function normalizeRecallItem(item: RawRecallItem): RecallItem {
   return {

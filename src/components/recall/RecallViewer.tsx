@@ -1,12 +1,12 @@
-import { useRecallList } from "../../hooks/useRecallList";
+import { useRecallList } from "@/hooks/useRecallList";
 import RecallGalleryView from "./RecallGalleryView";
 import RecallListView from "./RecallListView";
 import { useEffect, useState } from "react";
-import { VIEW_TYPES } from "../../constants/viewTypes";
-import type { ViewType } from "../../constants/viewTypes";
-import type { RawRecallItem, RecallItem } from "../../types/recall";
-import Pagenation from "../common/Pagenation";
-import { normalizeRecallItem } from "../../utils/normalizeRecallItem";
+import { VIEW_TYPES } from "@/constants/viewTypes";
+import type { ViewType } from "@/constants/viewTypes";
+import type { RawRecallItem, RecallItem } from "@/types/recall";
+import Pagenation from "@/components/common/Pagenation";
+import { normalizeRecallItem } from "@/utils/normalizeRecallItem";
 
 export default function RecallViewer() {
   const [viewType, setViewType] = useState<ViewType>(VIEW_TYPES.LIST);

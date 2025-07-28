@@ -1,4 +1,4 @@
-import type { RecallItem } from "../../types/recall";
+import type { RecallItem } from "@/types/recall";
 import RecallListItem from "./RecallListItem";
 
 type Props = {

@@ -1,4 +1,4 @@
-import RecallViwer from "../components/recall/RecallViewer";
+import RecallViwer from "@/components/recall/RecallViewer";
 
 export default function RecallPage() {
   return (

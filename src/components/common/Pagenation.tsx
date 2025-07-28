@@ -1,9 +1,9 @@
-interface PagenationProps {
+type PagenationProps = {
   current: number;
   total: number;
   perPage: number;
   onPageChange: (page: number) => void;
-}
+};
 
 export default function Pagenation({
   current,

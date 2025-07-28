@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchRecallList } from "../api/recall";
+import { fetchRecallList } from "@/api/recall";
 
 export const useRecallList = (page: number = 1, count: number = 5) => {
   return useQuery({
