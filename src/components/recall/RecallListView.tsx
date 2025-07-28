@@ -1,9 +1,9 @@
 import type { RecallItem } from "../../types/recall";
 import RecallListItem from "./RecallListItem";
 
-interface Props {
+type Props = {
   items: RecallItem[];
-}
+};
 
 export default function RecallListView({ items }: Props) {
   if (items.length === 0) return <p>데이터 없음</p>;

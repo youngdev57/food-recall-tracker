@@ -1,8 +1,8 @@
 import type { RecallItem } from "../../types/recall";
 
-interface Props {
+type Props = {
   item: RecallItem;
-}
+};
 
 export default function RecallListItem({ item }: Props) {
   return (
