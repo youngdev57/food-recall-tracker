@@ -1,6 +1,6 @@
 import { useRecallList } from "@/hooks/useRecallList";
-import RecallGalleryView from "./RecallGalleryView";
-import RecallListView from "./RecallListView";
+import RecallGalleryView from "./component/RecallGalleryView";
+import RecallListView from "./component/RecallListView";
 import { useEffect, useState } from "react";
 import { VIEW_TYPES } from "@/constants/viewTypes";
 import type { ViewType } from "@/constants/viewTypes";
