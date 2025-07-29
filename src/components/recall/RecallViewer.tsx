@@ -23,7 +23,6 @@ export default function RecallViewer() {
     console.log("processed:", items);
   }, [items]);
 
-  if (isLoading) return <p>로딩중</p>;
   if (error) return <p>에러 발생</p>;
 
   return (
@@ -47,8 +46,12 @@ export default function RecallViewer() {
         </button>
       </div>
 
-      {viewType === VIEW_TYPES.LIST && <RecallListView items={items} />}
-      {viewType === VIEW_TYPES.GALLERY && <RecallGalleryView items={items} />}
+      {viewType === VIEW_TYPES.LIST && (
+        <RecallListView items={items} isLoading={isLoading} />
+      )}
+      {viewType === VIEW_TYPES.GALLERY && (
+        <RecallGalleryView items={items} isLoading={isLoading} />
+      )}
 
       <Pagenation
         current={page}
