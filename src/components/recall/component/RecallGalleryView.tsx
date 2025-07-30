@@ -1,4 +1,5 @@
 import type { RecallItem } from "@/types/recall";
+import RecallGalleryItem from "./RecallGalleryItem";
 
 type Props = {
   items: RecallItem[];
@@ -10,10 +11,10 @@ export default function RecallListView({ items, isLoading }: Props) {
   if (items.length === 0) return <p>데이터 없음</p>;
 
   return (
-    <ul className="p-4">
-      {items.map((item, idx) => (
-        <li key={idx}>{item.productName}</li>
+    <div className="grid grid-cols-3 gap-4">
+      {items.map((item) => (
+        <RecallGalleryItem key={item.recallSeq} item={item} />
       ))}
-    </ul>
+    </div>
   );
 }
